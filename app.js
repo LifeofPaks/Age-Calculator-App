@@ -122,6 +122,8 @@ function calculateDate(){
     let month = today.getMonth() - birthDate.getMonth()
     let day = today.getDate() - birthDate.getDate()
 
+
+    // IF THE BIRTHDATE DAY AND MONTH ARE AFTER THE CURRENT DAY AND MONTH SUBTRACT YEAR BY ONE
     if (month < 0 || (month === 0 && day < 0)){
         year--
 
