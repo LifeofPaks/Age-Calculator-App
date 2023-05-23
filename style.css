@@ -41,10 +41,13 @@
     margin-bottom: 30px;
     max-width: 400px;
     width: 100%;
-    flex-wrap: wrap;
     position: relative;
 }
 
+
+.box{
+    position: relative;
+}
 .box div {
     color: #777;
     text-transform: uppercase;
@@ -82,12 +85,15 @@ hr{
     border: 0;
     outline: 0;
     background: #7944eb;
-    position: absolute;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    bottom: -60px;
-    right: -110px;
+    cursor: pointer;
+    padding: 10px 12px;
+}
+
+.submit-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .a-box{
@@ -114,9 +120,6 @@ hr{
     font-size: 5rem;
 }
 
-.box{
-    position: relative;
-}
 
 .box.title-error .day,
 .box.title-error .month,
@@ -145,36 +148,23 @@ hr{
     color:  rgb(250, 14, 14);
 }
 
-@media (max-width: 600px){
-    .submit{
-        width: 60px;
-        height: 60px;
-        bottom: -80px;
-        right: -5px;
-    }
+@media (max-width: 520px){
 
-    .date-box{
-        margin-bottom: 50px;
+    .card{
+        padding: 20px;
+        padding-top: 30px;
     }
-}
-@media (max-width: 530px){
     .age-box h1{
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     .age-box p{
         font-size: 3rem;
     }
-
-    .box div {
-        color: #777;
-        letter-spacing: 2px;
-        font-size: 9px;
-    }
     
     .box input{
-        max-width:80px;
-        padding: 8px 15px;
+       width: 80%;
+        padding: 8px 10px;
         font-size: 1.1em;
     }
 
@@ -183,5 +173,25 @@ hr{
     }
     .a-box{
         margin-bottom: -20px;
+    }
+
+    .box div{
+        margin-bottom: 5px;
+        width: fit-content;
+    }
+    .date-box{
+        margin-bottom: 10px;
+    }
+
+    .submit-box{
+        position: relative;
+        margin-top: 30px;
+    }
+
+    .submit{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 }

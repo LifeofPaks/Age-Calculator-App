@@ -31,7 +31,7 @@ dayInput.addEventListener('input', e=>{
         return
     }
 
-    if(+dayInput.value === 0){
+    if(+dayInput.value <= 0){
         isValid = false
         invalidDay.innerHTML = 'This field is required'
         dayBox.classList.add('error')
@@ -60,7 +60,7 @@ monthInput.addEventListener('input', e=>{
         return
     }
 
-    if(+monthInput.value === 0){
+    if(+monthInput.value <= 0){
         isValid = false
         invalidMonth.innerHTML = 'This field is required'
         monthBox.classList.add('error')
@@ -79,6 +79,9 @@ monthInput.addEventListener('input', e=>{
 
 // YEAR INPUT EVENTLISTENER===============================================
 yearInput.addEventListener('input', e=>{
+
+    let currntYear = new Date(). getFullYear()
+    
     if (+yearInput.value > 2023){
         invalidYear.innerHTML = 'Must be a valid year'
         yearBox.classList.add('error')
@@ -88,7 +91,7 @@ yearInput.addEventListener('input', e=>{
         return
     }
 
-    if(+yearInput.value === 0){
+    if(+yearInput.value <= 0){
         isValid = false
         invalidYear.innerHTML = 'This field is required'
         yearBox.classList.add('error')
@@ -112,16 +115,27 @@ submitBtn.addEventListener('click', calculateDate)
 
 function calculateDate(){
     let birthday = `${monthInput.value}/${dayInput.value}/${yearInput.value}`
-    let birthdayObj = new Date(birthday)
-    let ageDiff = Date.now() - birthdayObj
-    let ageDate = new Date(ageDiff)
-    let ageYear = ageDate.getUTCFullYear() - 1970
-    let ageMonth = ageDate.getUTCMonth()
-    let ageDay = ageDate.getUTCDay()
+    
+    let birthDate = new Date(birthday)
+    let today = new Date()
+    let year = today.getFullYear() - birthDate.getFullYear()
+    let month = today.getMonth() - birthDate.getMonth()
+    let day = today.getDate() - birthDate.getDate()
 
-    displayYear.innerHTML = ageYear
-    displayMonth.innerHTML = ageMonth
-    displayDay.innerHTML = ageDay
+    if (month < 0 || (month === 0 && day < 0)){
+        year--
+
+        if (month === 0){
+            month = 11
+        } else{
+            month = 12 + month 
+        }
+        day = 30 + day
+    }
+   
+    displayYear.innerHTML = year
+    displayMonth.innerHTML = month
+    displayDay.innerHTML = day
 }
 
 
