@@ -111,13 +111,13 @@ submitBtn.addEventListener('click', calculateDate)
 
 
 function calculateDate(){
-    let birthday = `${monthInput.value}/ ${dayInput.value}/${yearInput.value}`
+    let birthday = `${monthInput.value}/${dayInput.value}/${yearInput.value}`
     let birthdayObj = new Date(birthday)
     let ageDiff = Date.now() - birthdayObj
     let ageDate = new Date(ageDiff)
     let ageYear = ageDate.getUTCFullYear() - 1970
     let ageMonth = ageDate.getUTCMonth()
-    let ageDay = ageDate.getUTCDay() - 1
+    let ageDay = ageDate.getUTCDay()
 
     displayYear.innerHTML = ageYear
     displayMonth.innerHTML = ageMonth
